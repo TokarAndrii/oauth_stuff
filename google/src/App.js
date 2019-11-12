@@ -30,13 +30,15 @@ function App() {
   };
 
   const responseFacebook = response => {
-    console.log("responseFacebook - ", response);
-    const fullName = response.name;
-    const names = fullName.split(" ");
-    setFirstName(names[0]);
-    setSecondName(names[1]);
-    setIdToken(response.accessToken);
-    setImage(response.picture.data.url);
+    if (response && response.status !== "unknown") {
+      console.log("responseFacebook - ", response);
+      const fullName = response.name;
+      const names = fullName.split(" ");
+      setFirstName(names[0]);
+      setSecondName(names[1]);
+      setIdToken(response.accessToken);
+      setImage(response.picture.data.url);
+    }
   };
 
   return (
